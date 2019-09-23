@@ -1,0 +1,38 @@
+Create Table Students(
+StudentID int primary key identity,
+Name varchar(20)
+)
+
+Create table Exams
+(
+ExamID int primary key identity(101,1),
+Name varchar(20)
+)
+
+Create table StudentsExams
+(
+StudentID int foreign key references Students(StudentID),
+ExamID int foreign key references Exams(ExamID)
+Primary key(StudentID,ExamID)
+)		
+
+Insert into Students (Name)
+Values
+('Mila'),
+('Toni'),
+('Ron');
+
+Insert into Exams(Name)
+Values
+('SpringMVC'),
+('Neo4j'),
+('Oracle 11g');
+
+Insert into StudentsExams(StudentID,ExamID)
+values
+(1,101),
+(1,102),
+(2,101),
+(3, 103),
+(2, 102),
+(2, 103)

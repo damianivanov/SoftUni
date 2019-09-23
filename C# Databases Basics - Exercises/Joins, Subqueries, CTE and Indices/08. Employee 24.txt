@@ -1,0 +1,10 @@
+Select e.EmployeeID,e.FirstName,
+case  
+	when DatePart(YEAR,pr.StartDate)>=2005 THEN NULL
+	else pr.Name
+	end as [ProjectName]
+from Employees as e
+join EmployeesProjects as p on e.EmployeeID=p.EmployeeID
+join Projects as pr on p.ProjectID=pr.ProjectID	
+where e.EmployeeID=24
+

@@ -1,0 +1,5 @@
+Select mc.CountryCode,m.MountainRange,p.PeakName,p.Elevation from Peaks as p
+join MountainsCountries as mc on p.MountainID=mc.MountainID
+join Mountains as m on p.MountainId=m.Id
+where mc.CountryCode='BG' AND p.Elevation>2835
+order by Elevation desc

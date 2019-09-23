@@ -1,0 +1,3 @@
+Select CountryCode,Count(MountainID) as MountainRanges from MountainsCountries
+where CountryCode in ('US','RU','BG')
+group by CountryCode

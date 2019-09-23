@@ -1,0 +1,4 @@
+Select Min(a.MinAverageSalary) as MinAverageSalary from 
+(Select Avg(Salary) as MinAverageSalary from Employees
+Group by DepartmentID)  as a 
+

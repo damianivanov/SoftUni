@@ -1,0 +1,3 @@
+Select EmployeeID,FirstName,LastName,d.Name from Employees as e 
+join Departments as d on d.DepartmentID=e.DepartmentID
+where d.Name='Sales'

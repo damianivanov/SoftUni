@@ -1,0 +1,5 @@
+Create or alter trigger tr_deletedEmployees on Employees for delete
+as
+   
+Insert into Deleted_Employees(FirstName,LastName,MiddleName,JobTitle,DepartmentId,Salary)
+Select FirstName,LastName,MiddleName,JobTitle,DepartmentID,Salary from deleted

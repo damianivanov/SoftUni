@@ -1,0 +1,3 @@
+Select DepositGroup, Max(MagicWandSize) as LongestMagicWand from WizzardDeposits
+Group by DepositGroup 
+

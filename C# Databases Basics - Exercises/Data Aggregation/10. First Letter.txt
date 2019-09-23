@@ -1,0 +1,4 @@
+Select Distinct SUBSTRING(FirstName,1,1) as FirstLetter from WizzardDeposits
+where DepositGroup='Troll Chest'
+Group by FirstName
+

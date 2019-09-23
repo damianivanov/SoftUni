@@ -1,0 +1,11 @@
+create function ufn_CashInUsersGames (@gameName varchar(max))
+returns Table
+Return (Select Sum(k.Cash) as SumCash from(
+
+	Select g.Name,ug.Cash,
+	ROW_NUMBER() over (order by Cash desc ) as RN
+	from Games as g
+	join UsersGames as ug on ug.GameId=g.Id
+	where g.Name=@gameName ) as k 
+	where k.RN%2=1
+)

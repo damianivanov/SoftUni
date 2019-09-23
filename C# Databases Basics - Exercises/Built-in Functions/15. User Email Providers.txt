@@ -1,0 +1,3 @@
+Select Username,
+right(Email,LEN(Email)-CHARINDEX('@',Email)) as [Email Provider] from Users
+order by [Email Provider],Username

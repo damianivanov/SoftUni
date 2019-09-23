@@ -1,0 +1,9 @@
+create trigger tr_InsertAccountInfo ON Accounts For Update
+as
+declare @newSum Decimal(15,2) = (select Balance from inserted)
+declare @oldSum Decimal(15,2) =(select Balance from deleted)	
+declare @AccId int = (select Id from inserted)
+
+Insert INto Logs(AccountId,NewSum,OldSum)
+Values
+(@AccId,@newSum,@oldSum)

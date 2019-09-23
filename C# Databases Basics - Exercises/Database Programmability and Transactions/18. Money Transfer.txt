@@ -1,0 +1,38 @@
+create proc usp_TransferMoney(@SenderId int , @ReceiverId int, @Amount decimal(18,4))
+as	
+begin transaction 
+declare @sender int = (select top(1) Id from Accounts where Id=@SenderId)
+declare @receiver int = (select top(1) Id from Accounts where Id=@ReceiverId)
+
+if(@sender is null or @receiver is null)
+begin
+rollback
+raiserror('Invalid account Id',16,1)
+return 
+end
+
+if(@Amount<0)
+begin
+rollback
+raiserror ('Negative Money amount!',16,1)
+return
+end
+
+declare @CurrentAmountSender decimal(18,4) = (select top(1) Balance from Accounts where Id=@SenderId)
+
+if(@CurrentAmountSender-@Amount<0)
+begin
+rollback
+raiserror('Not enough money!',16,1)
+return
+end
+
+
+Update Accounts
+set Balance-=@Amount
+where Id=@sender
+
+Update Accounts
+set Balance+=@Amount
+where Id= @receiver
+commit

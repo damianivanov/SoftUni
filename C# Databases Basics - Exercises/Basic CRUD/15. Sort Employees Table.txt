@@ -1,0 +1,2 @@
+Select*from Employees
+Order by Salary desc,FirstName,LastName desc,MiddleName;

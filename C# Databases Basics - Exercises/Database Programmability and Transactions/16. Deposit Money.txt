@@ -1,0 +1,23 @@
+create proc usp_DepositMoney (@AccountId int , @MoneyAmount decimal(18,4))
+as
+begin transaction
+declare @account int = (select Id from Accounts where Id=@AccountId)
+if(@account is null)
+
+begin
+rollback
+raiserror('Invalid account Id',16,1)
+return 
+end
+
+if(@MoneyAmount<0)
+begin
+rollback
+raiserror ('Negative Money amount!',16,1)
+return
+end
+
+Update Accounts
+set Balance+=@MoneyAmount
+where Id=@AccountId
+commit

@@ -1,0 +1,3 @@
+Select FirstName,LastName,HireDate,d.Name from Employees as e 
+Join Departments as d on e.DepartmentID=d.DepartmentID
+where HireDate>'1-1-1999' AND (d.Name='Sales' OR d.Name='Finance')

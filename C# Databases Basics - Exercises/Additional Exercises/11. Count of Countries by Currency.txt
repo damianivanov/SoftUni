@@ -1,0 +1,5 @@
+Select c.CurrencyCode as [CurrencyCode],c.Description as [Currency],Count(cn.CountryName) as [NumberOfCountries] from Currencies as c
+left join Countries as cn on c.CurrencyCode=cn.CurrencyCode
+group by c.CurrencyCode,c.Description 
+order by NumberOfCountries desc, Currency asc
+

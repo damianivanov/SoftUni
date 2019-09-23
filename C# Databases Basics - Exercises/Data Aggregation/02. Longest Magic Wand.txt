@@ -1,0 +1,1 @@
+Select Max(MagicWandSize) as LongestMagicWand from WizzardDeposits

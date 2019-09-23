@@ -1,0 +1,6 @@
+Select Peakname,RiverName,
+Lower(Peakname+ Substring(RiverName,2,DataLength(RiverName)-1)) as Mix 
+from [Peaks] as pks	 
+join Rivers as rvrs
+on Right(pks.PeakName,1) = Left(rvrs.RiverName,1) 
+order by mix

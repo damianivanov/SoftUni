@@ -1,0 +1,2 @@
+Select FirstName from Employees
+where DepartmentID in (3,10) AND DatePart(Year,HireDate)>=1995 and DatePart(Year,HireDate)<=2005 ;	

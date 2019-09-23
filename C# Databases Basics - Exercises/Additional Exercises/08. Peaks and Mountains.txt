@@ -1,0 +1,3 @@
+Select PeakName,m.MountainRange,p.Elevation from Peaks as p
+join Mountains as m on p.MountainId=m.Id
+order by Elevation desc	,PeakName

@@ -1,0 +1,17 @@
+Select top(5) mu.CountryName,mu.HighestPeakElevation,mu.LongestRiverLength from(select c.CountryName,p.Elevation as HighestPeakElevation,r.Length as LongestRiverLength,
+
+Dense_Rank()over (partition by c.CountryName
+order by p.Elevation desc) as HighestPeak,
+
+Dense_Rank() over(partition by c.CountryName
+order by r.Length desc) as LongestRiver 
+
+from Countries as c
+join MountainsCountries as mc on c.CountryCode=mc.CountryCode
+join Peaks as p on mc.MountainId=p.MountainId
+join CountriesRivers as cr on c.CountryCode=cr.CountryCode
+join Rivers as r on cr.RiverId=r.Id
+group by CountryName,r.Length,p.Elevation)
+ as mu
+where mu.HighestPeak=1 AND mu.LongestRiver=1
+order by HighestPeakElevation desc, LongestRiverLength desc

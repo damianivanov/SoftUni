@@ -1,0 +1,7 @@
+Select TownID,Name from Towns
+where 
+Name Like 'M%' OR 
+Name Like 'K%' OR 
+Name Like 'B%' OR 
+Name Like 'E%'
+order by Name

@@ -1,0 +1,24 @@
+Update Countries
+set Countryname = 'Burma'
+where CountryName = 'Myanmar'
+
+Insert into Monasteries(Name,CountryCode) values
+('Hanga Abbey',Cast(
+(Select top(1) CountryCode from Countries
+where CountryName='Tanzania')
+as Char(2))
+)
+
+Insert into Monasteries(Name,CountryCode) values
+('Myin-Tin-Daik',Cast(
+(Select top(1) CountryCode from Countries
+where CountryName='Myanmar')
+as Char(2)))
+
+
+Select c.ContinentName,cr.CountryName ,count(m.Id) as [MonasteriesCount] from Monasteries as m
+right join  Countries as cr on cr.CountryCode=m.CountryCode
+right join  Continents as c on c.ContinentCode=cr.ContinentCode
+where cr.IsDeleted=0
+group by m.CountryCode,c.ContinentName,cr.CountryName,cr.IsDeleted	
+order by MonasteriesCount desc,cr.CountryName

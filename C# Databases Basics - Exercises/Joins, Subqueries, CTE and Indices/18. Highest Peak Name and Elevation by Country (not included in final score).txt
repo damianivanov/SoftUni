@@ -1,0 +1,12 @@
+select
+top(5)
+c.CountryName,
+IIF(p.PeakName is null,'(no highest peak)',p.PeakName) as [Highest Peak Name],
+IIF(p.Elevation is NULL,'0',p.Elevation) as [Highest Peak Elevation],
+IIF(m.MountainRange is NULL,'(no mountain)',m.MountainRange) as [Mountain] 
+
+from Countries as c
+left join MountainsCountries as mc on mc.CountryCode=c.CountryCode
+left join Mountains as m on m.Id=mc.MountainId
+left join Peaks as p on p.MountainId=m.Id
+order by c.CountryName,[Highest Peak Name]	

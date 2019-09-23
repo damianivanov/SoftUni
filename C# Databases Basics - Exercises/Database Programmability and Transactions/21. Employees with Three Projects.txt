@@ -1,0 +1,25 @@
+create proc usp_AssignProject(@emloyeeId int, @projectID int)
+as
+begin transaction
+
+declare @count int = (select count(ProjectID) from EmployeesProjects where EmployeeID=@emloyeeId)
+declare @alredy int =(select ProjectID from EmployeesProjects where EmployeeID=@emloyeeId and ProjectID=@projectID)
+
+if(@count>=3)
+begin
+rollback
+raiserror('The employee has too many projects',16, 1)
+end
+
+--if(@alredy is null)
+--begin
+--rollback
+--raiserror('Already assigned to this project',16,1)
+--end
+
+Insert into EmployeesProjects(EmployeeID,ProjectID)
+values (@emloyeeId,@projectID)
+
+commit
+
+

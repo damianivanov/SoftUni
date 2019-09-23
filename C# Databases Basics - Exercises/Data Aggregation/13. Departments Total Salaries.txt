@@ -1,0 +1,2 @@
+Select DepartmentID,Sum(Salary) as TotalSalAry from Employees
+Group by DepartmentID

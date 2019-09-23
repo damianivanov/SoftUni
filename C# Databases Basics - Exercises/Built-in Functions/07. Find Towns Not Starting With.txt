@@ -1,0 +1,6 @@
+Select TownID,Name from Towns
+where 
+Name NOT Like 'R%' AND 
+Name NOT Like 'B%' AND 
+Name NOT Like 'D%'  
+order by Name

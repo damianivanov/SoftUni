@@ -1,0 +1,5 @@
+Select DepartmentID,MIN(Salary) as MinimumSalAry from Employees
+where DepartmentID in (2,5,7) and HireDate>'01/01/2000'
+Group by DepartmentID
+	
+	

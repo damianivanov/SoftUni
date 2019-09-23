@@ -1,0 +1,24 @@
+Create Table Passports
+(
+PassportID int primary key not null,
+PassportNumber nvarchar(100)
+)
+
+Create Table Persons(
+PersonID Int primary key identity,
+FirstName varchar(50) not null,
+Salary money not null,
+PassportID int foreign key references Passports(PassportID)
+)
+
+Insert into Passports(PassportID,PassportNumber)
+Values
+(101,'N34FG21B'),
+(102,'K65LO4R7'),
+(103,'ZE657QP2');
+
+Insert into Persons(FirstName,Salary,PassportID)
+Values
+('Roberto',43300.00,102),
+('Tom',56100.00,103),
+('Yana',60200.00,101);

@@ -1,0 +1,6 @@
+create function ufn_CalculateFutureValue(@sum decimal(18,4), @yearlyInterestRate float, @NumberOfYears int)
+returns decimal (18,4)
+as
+begin
+	return  @sum*Power((1+@yearlyInterestRate),@NumberOfYears)
+end

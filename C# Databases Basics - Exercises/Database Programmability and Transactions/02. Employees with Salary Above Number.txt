@@ -1,0 +1,5 @@
+CREATE PROC usp_GetEmployeesSalaryAboveNumber @Input DECIMAL(18,4)
+as 
+Select	FirstName,LastName
+from Employees
+where Salary>=@Input

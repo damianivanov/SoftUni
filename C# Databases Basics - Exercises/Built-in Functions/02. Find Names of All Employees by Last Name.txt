@@ -1,0 +1,2 @@
+Select FirstName, LastName from Employees
+where LastName LIKE '%ei%';	

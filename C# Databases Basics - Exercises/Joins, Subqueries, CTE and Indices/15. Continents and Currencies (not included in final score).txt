@@ -1,0 +1,9 @@
+Select mu.ContinentCode,mu.CurrencyCode,mu.CurrencyUsage from (
+Select c.ContinentCode,c.CurrencyCode,Count(c.CurrencyCode) as CurrencyUsage,
+DENSE_RANK() over (partition by c.ContinentCode
+order by count(c.CurrencyCode) desc) as rankus from Countries as c
+group by C.ContinentCode,CurrencyCode
+having Count(c.CountryCode)>1
+) as mu
+where mu.rankus=1
+order by mu.ContinentCode,mu.CurrencyUsage 

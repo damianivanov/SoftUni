@@ -1,0 +1,7 @@
+Create proc usp_GetEmployeesFromTown @TownName varchar(20)
+as 
+select FirstName,LastName
+from Employees as e 
+join Addresses as a  on e.AddressID=a.AddressID
+join Towns as t on a.TownID=t.TownID
+where t.Name=@TownName

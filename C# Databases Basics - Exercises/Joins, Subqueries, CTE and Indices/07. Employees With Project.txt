@@ -1,0 +1,5 @@
+Select top(5) e.EmployeeID,FirstName,pr.Name from Employees as e 
+Join EmployeesProjects as p on p.EmployeeID=e.EmployeeID
+join Projects as pr on p.ProjectID=pr.ProjectID
+where pr.StartDate>'08.13.2002' AND pr.EndDate IS NULL
+order by e.EmployeeID

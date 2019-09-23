@@ -1,0 +1,2 @@
+Select DepositGroup,SUM(DepositAmount) as TotalSum from WizzardDeposits
+Group by DepositGroup 

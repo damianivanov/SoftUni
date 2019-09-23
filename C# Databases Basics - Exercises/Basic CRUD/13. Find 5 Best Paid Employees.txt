@@ -1,0 +1,2 @@
+Select TOP(5) FirstName,LastName from Employees
+Order by Salary desc;

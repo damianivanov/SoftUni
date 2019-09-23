@@ -1,0 +1,6 @@
+Select Sum(k.Difference) from(
+Select wd.DepositAmount-
+(Select DepositAmount as [Difference]
+from WizzardDeposits as w
+where w.id=wd.id+1) as Difference
+from WizzardDeposits as wd) as k

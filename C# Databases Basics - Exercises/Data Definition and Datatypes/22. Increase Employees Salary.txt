@@ -1,0 +1,3 @@
+Update Employees
+set Salary*=1.1; 
+Select Salary from Employees; 

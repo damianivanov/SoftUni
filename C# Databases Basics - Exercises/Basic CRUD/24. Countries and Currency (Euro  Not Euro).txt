@@ -1,0 +1,7 @@
+Select CountryName,CountryCode,
+Case
+	When CurrencyCode='EUR' THEN 'Euro'
+	Else 'Not Euro' 
+	END as Currency
+from Countries	
+order by CountryName 

@@ -1,0 +1,6 @@
+select Name from Towns
+order by Name asc;
+select Name from Departments
+order by Name asc;
+select FirstName,LastName,JobTitle,Salary from Employees
+order by Salary desc;

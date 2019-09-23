@@ -1,0 +1,41 @@
+declare @StamatID int =(select Id from UsersGames where UserId=9 and GameId=87)
+declare @cash decimal(15,2) =(select Cash from UsersGames where UserId=9 and GameId=87)
+declare @itemsPrice decimal(15,2)=(select Sum(Price) from Items where MinLevel between 11 and 12)
+
+
+if(@cash>=@itemsPrice)
+begin
+begin transaction
+Update UsersGames
+set Cash-=@itemsPrice
+where Id=@StamatID
+insert into UserGameItems(ItemId,UserGameId)
+Select Id,@StamatID from Items where MinLevel between 11 and 12
+end
+commit
+end
+
+declare @NewCash decimal(15,2)=(select Cash from UsersGames where UserId =9 and GameId=87)
+declare @NewitemsPrice decimal(15,2)=(select Sum(Price) from Items where MinLevel between 19 and 21)
+
+if(@Newcash>=@NewitemsPrice)
+begin
+begin transaction
+Update UsersGames
+set Cash-=@NewitemsPrice
+where Id=@StamatID
+
+insert into UserGameItems(ItemId,UserGameId)
+Select Id,@StamatID from Items where MinLevel between 19 and 21
+
+commit
+end
+
+
+Select i.Name from UsersGames as ug 
+join Games as g on g.Id=ug.GameId
+join Users as u on u.Id=ug.UserId
+join UserGameItems as ugi on ugi.UserGameId=ug.Id
+join Items as i on i.Id=ugi.ItemId
+where u.FirstName='Stamat' and g.Name='Safflower' 
+order by i.Name

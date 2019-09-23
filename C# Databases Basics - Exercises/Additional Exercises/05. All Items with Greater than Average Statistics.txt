@@ -1,0 +1,7 @@
+Select i.Name,i.Price,i.MinLevel,s.Strength,s.Defence,s.Speed,s.Luck,s.Mind from Items as i
+join [Statistics] as s on s.Id=i.StatisticId
+where s.Luck>ALL(Select avg(Luck) from [Statistics])
+and s.Mind>ALL(Select avg(Mind) from [Statistics])
+and s.Speed>ALL(Select avg(Speed) from [Statistics])
+
+

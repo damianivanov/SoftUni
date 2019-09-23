@@ -1,0 +1,6 @@
+select * from Towns
+order by Name ASC;
+select * from Departments
+order by Name ASc;
+select * from Employees
+order by Salary desc;

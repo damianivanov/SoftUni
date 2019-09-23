@@ -1,0 +1,10 @@
+Select g.Name as [Game], gt.Name as [Game Type]
+,u.Username as[Username],ug.Level as [Level],
+ ug.Cash [Cash], c.Name as [Character] from Games as g
+
+join UsersGames as ug on g.Id=ug.GameId
+join GameTypes as gt on gt.Id= g.GameTypeId
+join Users as u on ug.UserId=u.Id
+join Characters as c on c.Id=ug.CharacterId
+
+order by ug.Level desc,u.Username, g.Name

@@ -1,0 +1,4 @@
+Create view V_EmployeesHiredAfter2000 as
+Select FirstName,LastName from Employees
+Where DATEPART(Year,HireDate)>2000;
+

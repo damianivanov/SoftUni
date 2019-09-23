@@ -1,0 +1,13 @@
+Select * INTO NewTable
+from Employees
+where Salary>30000
+
+Delete From NewTable
+Where ManagerID=42		
+
+Update NewTable
+Set Salary+=5000
+where DepartmentID=1
+
+Select DepartmentID,AVG(Salary) as AverageSalary from NewTable
+group by DepartmentID

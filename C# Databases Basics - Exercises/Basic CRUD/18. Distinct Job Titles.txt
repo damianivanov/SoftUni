@@ -1,0 +1,1 @@
+Select Distinct JobTitle from Employees

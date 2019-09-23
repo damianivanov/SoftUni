@@ -1,0 +1,4 @@
+Create view V_EmployeeNameJobTitle as 
+		
+Select  FirstName +' '+ ISNULL(MiddleName,'')+ ' ' + LastName as [FullName],JobTitle
+from Employees;

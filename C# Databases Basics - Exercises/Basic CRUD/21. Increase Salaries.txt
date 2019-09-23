@@ -1,0 +1,5 @@
+Update Employees 
+set Salary*=1.12
+where DepartmentID in (1,2,4,11);
+
+select Salary from Employees;

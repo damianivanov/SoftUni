@@ -1,0 +1,6 @@
+Select PeakName,m.MountainRange as [Mountain],c.CountryName,co.ContinentName from Peaks as p
+join Mountains as m on p.MountainId=m.Id
+join MountainsCountries	as mc on mc.MountainId=m.Id
+join Countries as c on c.CountryCode=mc.CountryCode
+join Continents as co on co.ContinentCode=c.ContinentCode
+order by PeakName,CountryName

@@ -1,0 +1,3 @@
+Select	Username,IpAddress as [IP Address] from Users
+where	IpAddress Like '___.1_%._%.___'
+order by Username

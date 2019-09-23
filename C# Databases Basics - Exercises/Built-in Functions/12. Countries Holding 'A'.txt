@@ -1,0 +1,3 @@
+Select CountryName,IsoCode from Countries
+where CountryName Like '%a%a%a%'
+order by IsoCode

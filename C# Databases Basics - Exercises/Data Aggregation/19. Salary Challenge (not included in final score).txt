@@ -1,0 +1,8 @@
+SELECT top(10) FirstName, LastName,DepartmentID
+FROM Employees AS T1
+  WHERE Salary > 
+  ( SELECT Avg(Salary) 
+    FROM Employees as T2
+    WHERE T1.DepartmentID=T2.DepartmentID )
+
+

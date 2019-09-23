@@ -1,0 +1,11 @@
+Select DepartmentID,tmp.Salary
+From(
+Select DepartmentID,Salary,Dense_rank() over (Partition by DepartmentID order by Salary desc) 
+as Rank
+from Employees) as tmp
+where tmp.Rank=3
+Group by tmp.DepartmentID,tmp.Salary
+
+
+ 
+ 

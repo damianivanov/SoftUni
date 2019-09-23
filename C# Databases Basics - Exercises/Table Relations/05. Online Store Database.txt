@@ -1,0 +1,27 @@
+Create table Cities(
+CityID int primary key identity not null,
+Name varchar(50));
+
+Create table Customers(
+CustomerID int primary key identity not null,
+Name varchar(50),
+Birthday date,
+CityID int foreign key references Cities(CityID));
+
+Create table Orders(
+OrderID int primary key identity not null,
+CustomerID int foreign key references Customers(CustomerID));
+
+Create table ItemTypes(
+ItemTypeID int primary key identity not null,
+Name varchar(50)
+);
+create table Items(
+ItemID int primary key identity not null,
+Name varchar(50),
+ItemTypeID int foreign key references ItemTypes(ItemTypeID));
+
+Create table OrderItems(
+OrderID int foreign key references Orders(OrderID),
+ItemID int foreign key references Items(ItemID)
+primary key (OrderID,ItemID))

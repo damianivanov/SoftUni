@@ -1,0 +1,3 @@
+Select right(Email,LEN(Email)-CHARINDEX('@',Email)) as [Email Provider],Count(Email) as [Number of Users] from Users
+group by right(Email,LEN(Email)-CHARINDEX('@',Email))
+order by [Number of Users] desc ,[Email Provider]

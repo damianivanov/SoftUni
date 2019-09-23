@@ -1,0 +1,8 @@
+Select u.Username ,g.Name as [Game],Count(ugi.ItemId) as [Items Count],Sum(i.Price) as [Items Price] from Games as g
+join UsersGames as ug on ug.GameId=g.Id
+join UserGameItems as ugi on ugi.UserGameId=ug.Id
+join Items as i on ugi.ItemId=i.Id
+join Users as u on u.Id=ug.UserId
+group by u.Username,g.Name
+having Count(ugi.ItemId)>= 10
+order by [Items Count] desc,[Items Price] desc,u.Username

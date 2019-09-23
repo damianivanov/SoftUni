@@ -1,0 +1,10 @@
+create trigger tr_NewEmail on Logs for insert 
+as
+Declare @oldSum decimal(15,2) =(Select top(1)OldSum from inserted)
+Declare @newSum decimal(15,2) = (Select top(1)NewSum from inserted)
+Declare @AccId int = (Select top(1) AccountId from inserted)
+Declare @subject nvarchar(max) = Concat('Balance change for account: ',@AccId)
+Declare @Body nvarchar(max) = Concat('On' ,GETDATE(), ' your balance was changed from ',@oldSum,' to ',@newSum)
+
+Insert into NotificationEmails(Recipient,Subject,Body) values
+(@AccId,@subject,@Body)

@@ -1,0 +1,4 @@
+Select e.EmployeeID,e.FirstName,e.ManagerID,m.FirstName as ManagerName from Employees as e
+join Employees as m on e.ManagerID=m.EmployeeID
+where e.ManagerID = 3 OR e.ManagerID = 7
+order by EmployeeID

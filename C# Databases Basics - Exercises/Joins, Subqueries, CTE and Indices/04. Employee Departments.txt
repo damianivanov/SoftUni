@@ -1,0 +1,4 @@
+Select top(5) EmployeeID,FirstName,Salary,d.Name as DepartmentName from Employees as e 
+join Departments as d on d.DepartmentID=e.DepartmentID
+where  Salary >15000
+order by e.DepartmentID

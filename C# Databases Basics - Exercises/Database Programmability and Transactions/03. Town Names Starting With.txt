@@ -1,0 +1,5 @@
+Create proc usp_GetTownsStartingWith @input varchar(20)
+as 
+select Name
+from Towns
+where Name like @input + '%'

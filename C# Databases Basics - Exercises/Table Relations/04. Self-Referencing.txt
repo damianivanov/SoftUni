@@ -1,0 +1,13 @@
+Create table Teachers(
+TeacherID int primary key identity(101,1),
+Name varchar(20),
+ManagerID int foreign key references Teachers(TeacherID)
+)
+
+Insert into Teachers(Name,ManagerID) Values
+( 'John',NULL),
+( 'Maya',106),
+( 'Silvia',106),
+( 'Ted',105),
+( 'Mark',101),
+( 'Greta',101);
