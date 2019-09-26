@@ -1,5 +1,5 @@
 Select DepositGroup,SUM(DepositAmount) as TotalSum from WizzardDeposits
 where MagicWandCreator='Ollivander family' 
 Group by DepositGroup
-having Sum(DepositAmount)<150000 
-order by TotalSum desc
+
+
