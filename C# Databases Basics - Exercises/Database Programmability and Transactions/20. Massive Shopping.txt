@@ -13,7 +13,6 @@ insert into UserGameItems(ItemId,UserGameId)
 Select Id,@StamatID from Items where MinLevel between 11 and 12
 end
 commit
-end
 
 declare @NewCash decimal(15,2)=(select Cash from UsersGames where UserId =9 and GameId=87)
 declare @NewitemsPrice decimal(15,2)=(select Sum(Price) from Items where MinLevel between 19 and 21)
