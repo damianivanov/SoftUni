@@ -43,12 +43,20 @@ namespace SIS.HTTP
             byte[] requestBytes = new byte[1000000];
             int readBytes = await networkStream.ReadAsync(requestBytes, 0, requestBytes.Length);
             string request = Encoding.UTF8.GetString(requestBytes, 0, readBytes);
-            byte[] fileContent = Encoding.UTF8.GetBytes(@"
-                                                        <form method='post'> 
-                                                        <input name='username'/>
-                                                        <input type='submit'/>
-                                                        </form>
-                                                        <h1> Hello World</h1>");
+
+            var req = new HttpRequest(request);
+
+            string content = "<h1>random page</h1>";
+            if (req.Path=="/")
+            {
+               content = "<h1>home page</h1>";
+            }
+            else if (req.Path=="/users/login")
+            {
+                content = "<h1>login page</h1>";
+            }
+
+            byte[] fileContent = Encoding.UTF8.GetBytes(content);
             string headers =   "HTTP/1.0 200 OK" + HttpConstants.NewLine +
                                "Server: MyCustsomerServer/1.0" + HttpConstants.NewLine +
                                "Content-Type: text/html" + HttpConstants.NewLine +
