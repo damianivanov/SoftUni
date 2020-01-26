@@ -42,28 +42,29 @@ namespace SIS.HTTP
             using NetworkStream networkStream = tcpClient.GetStream();
             byte[] requestBytes = new byte[1000000];
             int readBytes = await networkStream.ReadAsync(requestBytes, 0, requestBytes.Length);
-            string request = Encoding.UTF8.GetString(requestBytes, 0, readBytes);
+            string requestString = Encoding.UTF8.GetString(requestBytes, 0, readBytes);
 
-            var req = new HttpRequest(request);
+            var request = new HttpRequest(requestString);
 
             string content = "<h1>random page</h1>";
-            if (req.Path=="/")
+            if (request.Path=="/")
             {
                content = "<h1>home page</h1>";
             }
-            else if (req.Path=="/users/login")
+            else if (request.Path=="/users/login")
             {
                 content = "<h1>login page</h1>";
             }
 
             byte[] fileContent = Encoding.UTF8.GetBytes(content);
-            string headers =   "HTTP/1.0 200 OK" + HttpConstants.NewLine +
-                               "Server: MyCustsomerServer/1.0" + HttpConstants.NewLine +
-                               "Content-Type: text/html" + HttpConstants.NewLine +
-                               $"Content-Length: {fileContent.Length}" + HttpConstants.NewLine + HttpConstants.NewLine;
-            byte[] headersBytes = Encoding.UTF8.GetBytes(headers);
-            await networkStream.WriteAsync(headersBytes, 0, headersBytes.Length);
-            await networkStream.WriteAsync(fileContent, 0, fileContent.Length);
+            var response = new HttpResponse(HttpResponseCode.Ok, fileContent);
+            response.Headers.Add(new Header("Server", "MyCustsomerServer / 1.0"));
+            response.Headers.Add(new Header("Content-Type", "text / html"));       
+            
+            byte[] responseBytes = Encoding.UTF8.GetBytes(response.ToString());
+            await networkStream.WriteAsync(responseBytes, 0, responseBytes.Length);
+            await networkStream.WriteAsync(response.Body, 0, response.Body.Length);
+
             Console.WriteLine(request);
             Console.WriteLine(new string('=', 70));
 
