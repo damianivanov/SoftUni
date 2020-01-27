@@ -12,13 +12,13 @@ namespace SIS.HTTP
         {
             this.Headers = new List<Header>();
             this.Cookies = new List<Cookie>();
+
             StringReader reader = new StringReader(httpRequestAsString);
+
             var lines = httpRequestAsString.Split(new string[] { HttpConstants.NewLine },
                 StringSplitOptions.None).ToArray();
-            var httpInfoHeader = lines[0];
-            
+            var httpInfoHeader = lines[0];    
             var InfoHeaderParts = httpInfoHeader.Split(' ');
-
             if (InfoHeaderParts.Length != 3)
             {
                 throw new HttpServerException("Invalid HTTP Header line.");
