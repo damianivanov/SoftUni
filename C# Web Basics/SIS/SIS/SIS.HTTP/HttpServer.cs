@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -18,12 +20,15 @@ namespace SIS.HTTP
     public class HttpServer : IHttpServer
     {
         private readonly TcpListener tcpListener;
-        //Actions
-        public HttpServer(int port)
-        {
+        private int v;
+        private IList<Route> RouteTable;
 
+  
+      
+        public HttpServer(int port, IList<Route> routeTable)
+        {
             this.tcpListener = new TcpListener(IPAddress.Loopback, port);
-            
+            this.RouteTable = routeTable;
         }
 
         public async Task StartAsync()
@@ -45,19 +50,18 @@ namespace SIS.HTTP
             string requestString = Encoding.UTF8.GetString(requestBytes, 0, readBytes);
 
             var request = new HttpRequest(requestString);
-
-            string content = "<h1>random page</h1>";
-            if (request.Path=="/")
+            var route = this.RouteTable.FirstOrDefault(x => x.HttpMethod == request.Method &&
+            x.Path == request.Path);
+            HttpResponse response;
+            if (route==null)
             {
-               content = "<h1>home page</h1>";
+                response = new HttpResponse(HttpResponseCode.NotFound, new byte[0]); 
             }
-            else if (request.Path=="/users/login")
+            else
             {
-                content = "<h1>login page</h1>";
+                response=route.Action(request);
             }
 
-            byte[] fileContent = Encoding.UTF8.GetBytes(content);
-            var response = new HttpResponse(HttpResponseCode.Ok, fileContent);
             response.Headers.Add(new Header("Server", "MyCustsomerServer / 1.0"));
             response.Headers.Add(new Header("Content-Type", "text / html"));
             response.Cookies.Add(new ResponseCookie("sid", Guid.NewGuid().ToString())
