@@ -59,8 +59,9 @@ namespace SIS.HTTP
             byte[] fileContent = Encoding.UTF8.GetBytes(content);
             var response = new HttpResponse(HttpResponseCode.Ok, fileContent);
             response.Headers.Add(new Header("Server", "MyCustsomerServer / 1.0"));
-            response.Headers.Add(new Header("Content-Type", "text / html"));       
-            
+            response.Headers.Add(new Header("Content-Type", "text / html"));
+            response.Cookies.Add(new ResponseCookie("sid", Guid.NewGuid().ToString())
+                     {MaxAge=3600 });
             byte[] responseBytes = Encoding.UTF8.GetBytes(response.ToString());
             await networkStream.WriteAsync(responseBytes, 0, responseBytes.Length);
             await networkStream.WriteAsync(response.Body, 0, response.Body.Length);

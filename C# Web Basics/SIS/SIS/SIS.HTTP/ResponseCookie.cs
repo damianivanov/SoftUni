@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Text;
 
 namespace SIS.HTTP
 {
-    public class ResponseCookie:Cookie
+    public class ResponseCookie : Cookie
     {
-        public ResponseCookie(string name, string value) 
-            :base(name,value)
+        public ResponseCookie(string name, string value)
+            : base(name, value)
         {
             this.Path = "/";
             this.SameSite = SameSiteType.None;
@@ -18,5 +19,40 @@ namespace SIS.HTTP
         public bool Secure { get; set; }
         public bool HttpOnly { get; set; }
         public SameSiteType SameSite { get; set; }
+
+        public override string ToString()
+        {
+            StringBuilder cookieBuilder = new StringBuilder();
+            cookieBuilder.Append($"{this.Name}={this.Value}");
+            if (this.MaxAge.HasValue)
+            {
+                cookieBuilder.Append($"; Max-Age=" + this.MaxAge.Value.ToString());
+
+            }
+            else if (this.Expires.HasValue)
+            {
+                cookieBuilder.Append($"; Expires=" + this.Expires.Value.ToString("r"));
+            }
+            if (!string.IsNullOrWhiteSpace(this.Domain))
+            {
+                cookieBuilder.Append($"; Domain=" + Domain);
+            }
+            if (!string.IsNullOrWhiteSpace(this.Path))
+            {
+                cookieBuilder.Append($"; Path=" + Path);
+            }
+
+            if (Secure)
+            {
+                cookieBuilder.Append($"; Secure=");
+            }
+            if (HttpOnly)
+            {
+                cookieBuilder.Append($"; HttpOnly=");
+            }
+            cookieBuilder.Append($"; SameSite=" + this.SameSite.ToString());
+            return cookieBuilder.ToString().TrimEnd();
+        }
+
     }
 }
