@@ -50,11 +50,18 @@ namespace SIS.HTTP
             string requestString = Encoding.UTF8.GetString(requestBytes, 0, readBytes);
 
             var request = new HttpRequest(requestString);
+            string newSessionId=null;
             var SessionCookie = request.Cookies.FirstOrDefault(x => x.Name == HttpConstants.SessionCookieName);
-
             if (SessionCookie!=null &&this.sessions.ContainsKey(SessionCookie.Value))
             {
                 request.SessionData = this.sessions[SessionCookie.Value];
+            }
+            else
+            {
+                newSessionId = Guid.NewGuid().ToString();
+                var dictionary = new Dictionary<string, string>();
+                this.sessions.Add(newSessionId, dictionary);
+                request.SessionData = dictionary;
             }
             Console.WriteLine($"{request.Method} {request.Path}");
             Console.WriteLine(new string('=', 70));
@@ -74,12 +81,8 @@ namespace SIS.HTTP
             response.Headers.Add(new Header("Server", "MyCustsomerServer / 1.0"));
             response.Headers.Add(new Header("Content-Type", "text / html"));
 
-            var SessionCookie = request.Cookies.FirstOrDefault(x => x.Name == HttpConstants.SessionCookieName);
-
-            if(SessionCookie==null || !this.sessions.ContainsKey(SessionCookie.Value))
+            if (newSessionId!=null)
             {
-                var newSessionId = Guid.NewGuid().ToString();
-                this.sessions.Add(newSessionId, new Dictionary<string,string>());
                 response.Cookies.Add(new ResponseCookie(HttpConstants.SessionCookieName, newSessionId)
                 {HttpOnly=true,MaxAge = 30*3600 });
             }

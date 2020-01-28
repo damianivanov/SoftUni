@@ -3,6 +3,7 @@ using SIS.HTTP.Response;
 using SIS.MvcFramework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,7 +26,7 @@ namespace DemoApp
             routeTable.Add(new Route("/users/login", HttpMethodType.Get, Login));
             routeTable.Add(new Route("/users/login", HttpMethodType.Post, DoLogin));
             routeTable.Add(new Route("/contact", HttpMethodType.Get, Contact));
-            routeTable.Add(new Route("/favicon,ico", HttpMethodType.Get, FavIcon));
+            routeTable.Add(new Route("/favicon.ico", HttpMethodType.Get, FavIcon));
 
             HttpServer httpServer = new HttpServer(1998, routeTable);
             await httpServer.StartAsync();
@@ -33,7 +34,8 @@ namespace DemoApp
 
         private static HttpResponse FavIcon(HttpRequest request)
         {
-            throw new NotImplementedException();
+            var byteContent = File.ReadAllBytes("wwwroot/hashtag.ico");
+            return new FileResponse(byteContent,"image/x-icon");
         }
         public static HttpResponse Index(HttpRequest request)
         {
