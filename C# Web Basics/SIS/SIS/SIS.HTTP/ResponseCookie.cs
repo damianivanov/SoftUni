@@ -48,7 +48,7 @@ namespace SIS.HTTP
             }
             if (HttpOnly)
             {
-                cookieBuilder.Append($"; HttpOnly=");
+                cookieBuilder.Append($"; HttpOnly");
             }
             cookieBuilder.Append($"; SameSite=" + this.SameSite.ToString());
             return cookieBuilder.ToString().TrimEnd();

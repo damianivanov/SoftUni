@@ -7,5 +7,6 @@ namespace SIS.HTTP
     public static class HttpConstants
     {
         public const string NewLine = "\r\n";
+        public const string SessionCookieName = "SIS_SESSION";
     }
 }

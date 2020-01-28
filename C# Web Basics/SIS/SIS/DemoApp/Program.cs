@@ -1,4 +1,5 @@
 ﻿using SIS.HTTP;
+using SIS.HTTP.Response;
 using SIS.MvcFramework;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,8 @@ namespace DemoApp
             routeTable.Add(new Route("/users/login", HttpMethodType.Post, DoLogin));
             routeTable.Add(new Route("/contact", HttpMethodType.Get, Contact));
             routeTable.Add(new Route("/favicon,ico", HttpMethodType.Get, FavIcon));
-           
-            HttpServer httpServer = new HttpServer(1998,routeTable);
+
+            HttpServer httpServer = new HttpServer(1998, routeTable);
             await httpServer.StartAsync();
         }
 
@@ -36,34 +37,24 @@ namespace DemoApp
         }
         public static HttpResponse Index(HttpRequest request)
         {
-            string content = "<h1>H O M E page</h1>";
-            byte[] fileContent = Encoding.UTF8.GetBytes(content);
-            var response = new HttpResponse(HttpResponseCode.Ok, fileContent);
-            return response;        
+            return new HtmlResponse("<h1>H O M E page</h1>");
+
         }
 
         private static HttpResponse Contact(HttpRequest request)
         {
-            string content = "<h1>Contact page</h1>";
-            byte[] fileContent = Encoding.UTF8.GetBytes(content);
-            var response = new HttpResponse(HttpResponseCode.Ok, fileContent);
-            return response;
+            return new HtmlResponse("<h1>Contact page</h1>");
         }
-           
+
         public static HttpResponse Login(HttpRequest request)
         {
-            string content = "<h1>Login page</h1>";
-            byte[] fileContent = Encoding.UTF8.GetBytes(content);
-            var response = new HttpResponse(HttpResponseCode.Ok, fileContent);
-            return response;
+
+            return new HtmlResponse("<h1>Login page</h1>");
         }
 
         public static HttpResponse DoLogin(HttpRequest request)
         {
-            string content = "<h1>DoLogin page</h1>";
-            byte[] fileContent = Encoding.UTF8.GetBytes(content);
-            var response = new HttpResponse(HttpResponseCode.Ok, fileContent);
-            return response;
+            return new HtmlResponse("<h1>Dologin page</h1>");
         }
     }
 }

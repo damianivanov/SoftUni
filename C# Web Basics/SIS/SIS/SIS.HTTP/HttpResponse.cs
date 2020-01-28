@@ -20,6 +20,11 @@ namespace SIS.HTTP
             }
 
         }
+        internal HttpResponse() 
+        {
+            this.Headers = new List<Header>();
+            this.Cookies = new List<ResponseCookie>();
+        }
         public HttpVersionType Version { get; set; }
         public HttpResponseCode StatusCode { get; set; }
         public IList<Header> Headers { get; set; }
@@ -35,7 +40,7 @@ namespace SIS.HTTP
                 _ => "HTTP/1.1",
             };
 
-            responseToStringBuilder.Append($"{httpVersion}" + $"{(int)StatusCode}" + $"{StatusCode}" + HttpConstants.NewLine);
+            responseToStringBuilder.Append($"{httpVersion} " + $"{(int)StatusCode}" + $" {StatusCode}" + HttpConstants.NewLine);
             foreach (var header in Headers)
             {
                 responseToStringBuilder.Append(header.ToString()+HttpConstants.NewLine);
