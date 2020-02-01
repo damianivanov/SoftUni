@@ -71,3 +71,53 @@ C# Web Basics/SIS/SIS/.vs/SIS/v16/Server/sqlite3/storage.ide-shm
 *.ide-wal
 *.ide-wal
 *.csproj
+*.cache
+C# Web Basics/SIS/SIS/SIS.MvcFramework/SIS.MvcFramework.csproj
+C# Web Basics/SIS/SIS/SIS.sln
+C# Web Basics/SIS/SIS/SulsApp/bin/Debug/netcoreapp3.1/DemoApp.exe
+C# Web Basics/SIS/SIS/SulsApp/bin/Debug/netcoreapp3.1/DemoApp.pdb
+C# Web Basics/SIS/SIS/SulsApp/bin/Debug/netcoreapp3.1/SIS.HTTP.pdb
+C# Web Basics/SIS/SIS/SulsApp/bin/Debug/netcoreapp3.1/SIS.MvcFramework.pdb
+C# Web Basics/SIS/SIS/SulsApp/bin/Debug/netcoreapp3.1/SulsApp.deps.json
+C# Web Basics/SIS/SIS/SulsApp/bin/Debug/netcoreapp3.1/SulsApp.exe
+C# Web Basics/SIS/SIS/SulsApp/bin/Debug/netcoreapp3.1/SulsApp.pdb
+C# Web Basics/SIS/SIS/SulsApp/bin/Debug/netcoreapp3.1/SulsApp.runtimeconfig.dev.json
+C# Web Basics/SIS/SIS/SulsApp/bin/Debug/netcoreapp3.1/SulsApp.runtimeconfig.json
+C# Web Basics/SIS/SIS/SulsApp/Migrations/20200131102356_InitialCreate.cs
+C# Web Basics/SIS/SIS/SulsApp/Migrations/20200131102356_InitialCreate.Designer.cs
+C# Web Basics/SIS/SIS/SulsApp/Migrations/SulsDbContextModelSnapshot.cs
+C# Web Basics/SIS/SIS/SulsApp/obj/Debug/netcoreapp3.1/SulsApp.AssemblyInfo.cs
+C# Web Basics/SIS/SIS/SulsApp/obj/Debug/netcoreapp3.1/SulsApp.csproj.CopyComplete
+C# Web Basics/SIS/SIS/SulsApp/obj/Debug/netcoreapp3.1/SulsApp.csproj.FileListAbsolute.txt
+C# Web Basics/SIS/SIS/SIS.sln
+C# Web Basics/SIS/SIS/SIS.MvcFramework/SIS.MvcFramework.csproj
+C# Web Basics/SIS/SIS/DemoApp/Migrations/ApplicationDbContextModelSnapshot.cs
+C# Web Basics/SIS/SIS/DemoApp/Migrations/20200129161553_Initial.Designer.cs
+C# Web Basics/SIS/SIS/DemoApp/Migrations/20200129161553_Initial.cs
+C# Web Basics/SIS/SIS/DemoApp/DemoApp.csproj
+C# Web Basics/SIS/SIS/.vs/SIS/v16/Server/sqlite3/storage.ide-wal
+C# Web Basics/SIS/SIS/.vs/SIS/v16/Server/sqlite3/storage.ide-shm
+C# Web Basics/SIS/SIS/.vs/SIS/v16/Server/sqlite3/storage.ide
+C# Web Basics/SIS/SIS/.vs/SIS/v16/.suo
+C# Web Basics/SIS/SIS/SIS.sln
+C# Web Basics/SIS/SIS/SIS.MvcFramework/SIS.MvcFramework.csproj
+C# Web Basics/SIS/SIS/DemoApp/DemoApp.csproj
+C# Web Basics/SIS/SIS/.vs/SIS/v16/Server/sqlite3/storage.ide-wal
+C# Web Basics/SIS/SIS/.vs/SIS/v16/Server/sqlite3/storage.ide-shm
+C# Web Basics/SIS/SIS/.vs/SIS/v16/Server/sqlite3/storage.ide
+C# Web Basics/SIS/SIS/.vs/SIS/v16/.suo
+C# Web Basics/SIS/SIS/SIS.sln
+C# Web Basics/SIS/SIS/SIS.MvcFramework/SIS.MvcFramework.csproj
+C# Web Basics/SIS/SIS/DemoApp/DemoApp.csproj
+C# Web Basics/SIS/SIS/.vs/SIS/v16/Server/sqlite3/storage.ide-wal
+C# Web Basics/SIS/SIS/.vs/SIS/v16/Server/sqlite3/storage.ide-shm
+C# Web Basics/SIS/SIS/.vs/SIS/v16/Server/sqlite3/storage.ide
+C# Web Basics/SIS/SIS/.vs/SIS/v16/.suo
+C# Web Basics/SIS/SIS/SIS.sln
+C# Web Basics/SIS/SIS/SIS.MvcFramework/SIS.MvcFramework.csproj
+C# Web Basics/SIS/SIS/DemoApp/DemoApp.csproj
+C# Web Basics/SIS/SIS/.vs/SIS/v16/Server/sqlite3/storage.ide-wal
+C# Web Basics/SIS/SIS/.vs/SIS/v16/Server/sqlite3/storage.ide-shm
+C# Web Basics/SIS/SIS/.vs/SIS/v16/Server/sqlite3/storage.ide
+C# Web Basics/SIS/SIS/.vs/SIS/v16/.suo
+*.sln
