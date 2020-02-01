@@ -6,6 +6,7 @@ namespace SIS.HTTP
 {
     public class HttpResponse
     {
+        
         public HttpResponse(HttpResponseCode statusCode,byte[] body)
         {
             this.Version = HttpVersionType.Http10;
@@ -15,7 +16,7 @@ namespace SIS.HTTP
             this.Body = body;
             if (body?.Length>0)
             {
-            this.Headers.Add(new Header("Content-Length", body.Length.ToString()));
+                this.Headers.Add(new Header("Content-Length", body.Length.ToString()));
 
             }
 
@@ -39,7 +40,6 @@ namespace SIS.HTTP
                 HttpVersionType.Http20 => "HTTP/2.0",
                 _ => "HTTP/1.1",
             };
-
             responseToStringBuilder.Append($"{httpVersion} " + $"{(int)StatusCode}" + $" {StatusCode}" + HttpConstants.NewLine);
             foreach (var header in Headers)
             {

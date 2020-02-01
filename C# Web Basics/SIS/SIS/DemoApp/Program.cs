@@ -4,6 +4,7 @@ using SIS.MvcFramework;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,42 +22,9 @@ namespace DemoApp
     {
         static async Task Main(string[] args)
         {
-            var routeTable = new List<Route>();
-            routeTable.Add(new Route("/", HttpMethodType.Get, Index));
-            routeTable.Add(new Route("/users/login", HttpMethodType.Get, Login));
-            routeTable.Add(new Route("/users/login", HttpMethodType.Post, DoLogin));
-            routeTable.Add(new Route("/contact", HttpMethodType.Get, Contact));
-            routeTable.Add(new Route("/favicon.ico", HttpMethodType.Get, FavIcon));
-
-            HttpServer httpServer = new HttpServer(1998, routeTable);
-            await httpServer.StartAsync();
+            await WebHost.StartAsync(new StartUp());
         }
 
-        private static HttpResponse FavIcon(HttpRequest request)
-        {
-            var byteContent = File.ReadAllBytes("wwwroot/hashtag.ico");
-            return new FileResponse(byteContent,"image/x-icon");
-        }
-        public static HttpResponse Index(HttpRequest request)
-        {
-            return new HtmlResponse("<h1>H O M E page</h1>");
-
-        }
-
-        private static HttpResponse Contact(HttpRequest request)
-        {
-            return new HtmlResponse("<h1>Contact page</h1>");
-        }
-
-        public static HttpResponse Login(HttpRequest request)
-        {
-
-            return new HtmlResponse("<h1>Login page</h1>");
-        }
-
-        public static HttpResponse DoLogin(HttpRequest request)
-        {
-            return new HtmlResponse("<h1>Dologin page</h1>");
-        }
+        
     }
 }

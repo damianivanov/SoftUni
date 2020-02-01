@@ -9,13 +9,6 @@ using System.Threading.Tasks;
 using SIS.HTTP;
 namespace SIS.HTTP
 {
-    //Actions:
-    // => response IndexPage(request)
-    // /favicon.ico => favicon.ico
-    // GET/Contact =>response ShowContactForm(requeset)
-    // POST/Contact = > response FillContactForm(request)
-    // new HttpServer(80,)
-    // .Start()
 
     public class HttpServer : IHttpServer
     {
@@ -79,7 +72,7 @@ namespace SIS.HTTP
             }
 
             response.Headers.Add(new Header("Server", "MyCustsomerServer / 1.0"));
-            response.Headers.Add(new Header("Content-Type", "text / html"));
+            //response.Headers.Add(new Header("Content-Type", "text / html"));
 
             if (newSessionId!=null)
             {

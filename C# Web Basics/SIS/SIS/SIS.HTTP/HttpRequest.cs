@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
 
 namespace SIS.HTTP
 {
@@ -12,7 +13,8 @@ namespace SIS.HTTP
         {
             this.Headers = new List<Header>();
             this.Cookies = new List<Cookie>();
-
+            this.FormData = new Dictionary<string, string>();
+            this.SessionData = new Dictionary<string, string>();
             StringReader reader = new StringReader(httpRequestAsString);
 
             var lines = httpRequestAsString.Split(new string[] { HttpConstants.NewLine },
@@ -88,6 +90,16 @@ namespace SIS.HTTP
                 }
             }
 
+            this.Body = HttpUtility.UrlDecode(bodyBuilder.ToString().TrimEnd('\r','\n'));
+
+            var Bodyparts = this.Body.Split(new char[]{'&'},StringSplitOptions.RemoveEmptyEntries);
+            foreach (var bodyPart in Bodyparts)
+            {
+                var ParameterParts = bodyPart.Split(new char[] { '=' }, 2);
+                this.FormData.Add(
+                    HttpUtility.UrlDecode(ParameterParts[0]),
+                    HttpUtility.UrlDecode(ParameterParts[1]));
+            }
         }
 
 
@@ -99,7 +111,7 @@ namespace SIS.HTTP
         public string Body { get; set; }
         public IList<Cookie> Cookies { get; set; }
         public IDictionary<string,string> SessionData { get; set; }
-
+        public IDictionary<string, string> FormData { get; set; }
     }
 }
 

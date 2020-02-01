@@ -4,7 +4,8 @@
     {
         Ok=200,
         MovedPermanently=301,
-        TemporaryRedirect =307,
+        Found=302,
+        TemporaryRedirect =307, //Keeps the same response code as the request
         Unauthorized=401,
         Forbidden=403,
         NotFound=404,
