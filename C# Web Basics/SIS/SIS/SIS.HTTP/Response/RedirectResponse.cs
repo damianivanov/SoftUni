@@ -1,6 +1,6 @@
 ﻿namespace SIS.HTTP.Response
 {
-    public class RedirectResponse:HttpResponse
+    public class RedirectResponse : HttpResponse
     {
         public RedirectResponse(string newLocation)
         {

@@ -1,14 +1,25 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿namespace SIS.HTTP
+{
+    using System.Threading.Tasks;
 
-namespace SIS.HTTP
-{ 
+    /// <summary>
+    /// Describes HTTP Server functionalities.
+    /// </summary>
+    public interface IHttpServer
+    {
+        /// <summary>
+        /// Starts the HTTP Server asynchronously.
+        /// </summary>
+        Task StartAsync();
 
-   public interface IHttpServer
-   {
-       Task StartAsync();
-       Task Reset();
-       void Stop();
-   }
-    
+        /// <summary>
+        /// Resets the HTTP Server asynchronously.
+        /// </summary>
+        Task ResetAsync();
+
+        /// <summary>
+        /// Stops the HTTP Server.
+        /// </summary>
+        void Stop();
+    }
 }

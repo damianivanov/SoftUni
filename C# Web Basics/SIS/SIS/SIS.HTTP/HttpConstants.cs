@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SIS.HTTP
+﻿namespace SIS.HTTP
 {
+    /// <summary>
+    /// Contains various HTTP Constants.
+    /// </summary>
     public static class HttpConstants
     {
         public const string NewLine = "\r\n";
-        public const string SessionCookieName = "SIS_SESSION";
+        public const string SessionIdCookieName = "SIS_SESSION";
     }
 }
