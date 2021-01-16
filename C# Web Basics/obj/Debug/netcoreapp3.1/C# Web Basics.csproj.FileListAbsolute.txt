@@ -1,0 +1,4 @@
+C:\Users\Damian's PC\Documents\GitHub\SoftUni\C# Web Basics\obj\Debug\netcoreapp3.1\C# Web Basics.csprojAssemblyReference.cache
+C:\Users\Damian's PC\Documents\GitHub\SoftUni\C# Web Basics\obj\Debug\netcoreapp3.1\C# Web Basics.AssemblyInfoInputs.cache
+C:\Users\Damian's PC\Documents\GitHub\SoftUni\C# Web Basics\obj\Debug\netcoreapp3.1\C# Web Basics.AssemblyInfo.cs
+C:\Users\Damian's PC\Documents\GitHub\SoftUni\C# Web Basics\obj\Debug\netcoreapp3.1\C# Web Basics.csproj.CoreCompileInputs.cache
